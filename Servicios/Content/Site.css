@@ -1,0 +1,30 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 500px;
+}
+
+h1,h2,h3,h4 {
+    border-bottom: 2px solid #c9c9c9;
+    font-family: "Frutiger";
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 0;
+    padding-bottom: 7px;
+    text-transform: none;
+}
+a {
+    font-family: "Frutiger";
+}

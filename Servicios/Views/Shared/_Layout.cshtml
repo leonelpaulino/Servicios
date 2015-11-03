@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+    <p>
+        <h4>@ViewBag.nombreUsuario</h4> <a href="~/Solicitante/Logout"><h4>Cerrar Sessión</h4></a>
+    </p>
+        <div class="container">
+            <ul class="nav nav-pills nav-justified">
+                @if (Context.Request.Url.AbsolutePath.ToLower().Contains("/solicitudes/create"))
+                {
+                    <li><a href="~/Solicitudes/index"> Ver Solicitudes</a></li>
+                    <li class="active"><a href="~/Solicitudes/Create" style="background-color:#6ca944">Llenar Solicitud</a></li>
+
+                }
+                else
+                {
+                    <li class="active"><a href="~/Solicitudes/index" style="background-color:#6ca944"> Ver Solicitudes</a></li>
+                    <li><a href="~/Solicitudes/Create">Llenar Solicitud</a></li>
+                }
+
+
+            </ul>
+        </div>
+    
+    <div class="container body-content">
+        
+        @RenderBody()
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

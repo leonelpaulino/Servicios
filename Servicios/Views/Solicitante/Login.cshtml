@@ -1,0 +1,75 @@
+﻿@model Servicios.Models.LoginSolicitante
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @{ Html.RenderPartial("_Alert"); }
+    @using (Html.BeginForm())
+    {@*<form action="servicios/solicitante/login" method="post" novalidate ="novalidate">*@
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal col-md-offset-2">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="~/Img/Marena.png" />
+                </div>
+                <div class="col-md-10 col-md-pull-1 bottom-left">
+                    <h3>Servicios Para Solicitudes En Linea</h3>
+                </div>
+            </div>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @id = "usuarioLog", @class = "form-control", @style = "width:300px" } })
+                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Clave, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Clave, new { htmlAttributes = new { @id = "claveLog", @class = "form-control", @style = "width:300px" } })
+                    @Html.ValidationMessageFor(model => model.Clave, "", new { @class = "text-danger" })
+                    <span class="text-danger">@ViewBag.Error</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*<a id ="createLink"class="control-label col-md-3" data-toggle="modal" data-target="#create">Click Aquí Para Registrarse</a>
+                <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                   @{Html.RenderPartial("_Create"); }
+                </div>*@
+                @Html.ActionLink("Click Aquí Para Registrarse", "Create", "", new { @class = "control-label col-md-3" })
+                <div class=" col-md-9">
+                    <input type="submit" id="submit" value="Iniciar Sessión" class="form-control btn-success" style="max-width:300px" />
+                </div>
+            </div>
+        </div>
+    @*</form>*@
+    }
+
+    <div>
+        
+    </div>
+</body>
+</html>

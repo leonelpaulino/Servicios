@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Servicios.Models.Solicitudes>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado De Solicitudes</h2>
+@{ Html.RenderPartial("_Alert"); }
+<p>
+    @Html.ActionLink("Nueva Solicitud", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Servicios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoActual.EstadoActual)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Servicios.NombreServicios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoActual.EstadoActual)
+        </td>
+        <td>
+            @Html.ActionLink("Detalle", "Details", new { id= item.Id.ToString()})
+        </td>
+    </tr>
+}
+
+</table>

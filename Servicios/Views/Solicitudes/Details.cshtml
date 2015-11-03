@@ -1,0 +1,76 @@
+﻿@model Servicios.Models.Solicitudes
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
+@Html.Partial("~/Views/Shared/_Progress.cshtml");
+<h2>Solicitud</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                <h3>@Html.DisplayFor(model => model.Servicios.NombreServicios)</h3>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.NoSolicitud)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NoSolicitud)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Solicitantes.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Solicitantes.Cedula)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Solicitantes.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Solicitantes.NombreCompleto)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Institucion)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Institucion)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CantParticipante)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CantParticipante)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.EstadoActual.EstadoActual)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.EstadoActual.EstadoActual)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Nota)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Nota)
+            </td>
+        </tr>
+        </table>
+        
+</div>
+<p>
+    @Html.ActionLink("Volver", "Index")
+</p>

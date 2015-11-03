@@ -1,0 +1,125 @@
+﻿@using Servicios.Models
+<link href="~/Content/ProgressBar.css" rel="stylesheet" type="text/css" />
+@{string widthBar = (800 / (ViewBag.estados.Count + 1)).ToString() + "px"; }
+<div class="progressBar">
+     @if (ViewBag.Solicitud == null)
+     {
+            <div class="circle active">
+        
+      
+            <span class="label">1</span>
+            <span class="title">Solicitud</span>
+        </div>
+        <span class="bar" style="width:@widthBar"></span>
+     }
+     else
+     {
+        <div class="circle done">
+
+
+            <span class="label">1</span>
+            <span class="title">Solicitud</span>
+        </div>
+        <span class="bar done" style="width:@widthBar"></span>
+     }
+    @{ 
+        int pos = 2;
+        List < Estado > estados = ViewBag.estados;
+     }
+    @foreach (Estado i in estados)
+    {
+        if (i.EstadoActual == "Completado" || i.EstadoActual == "Denegado")
+        {
+            continue;
+        }
+        if (ViewBag.Solicitud != null)
+        {
+            if (ViewBag.Solicitud.EstadoActual.Posicion < i.Posicion)
+            {
+                <div class="circle">
+                    <span class="label">@pos</span>
+                    <span class="title">@i.EstadoActual</span>
+                </div>
+                if (ViewBag.estados.Count - 1 != estados.FindIndex(Estado => Estado.Id.ToString() == i.Id.ToString()))
+                {
+                            <span class="bar" style="width:@widthBar"></span>
+                            }
+            }
+            else if (ViewBag.Solicitud.EstadoActual.Posicion > i.Posicion)
+            {
+                <div class="circle done">
+                    <span class="label">@pos</span>
+                    <span class="title">@i.EstadoActual</span>
+                </div>
+                if (ViewBag.estados.Count-1 != estados.FindIndex(Estado=>Estado.Id.ToString() == i.Id.ToString()))
+                {
+                    <span class="bar done" style="width:@widthBar"></span>
+                }
+            }
+            else
+            {
+                if (ViewBag.estados.Count - 1 != estados.FindIndex(Estado => Estado.Id.ToString() == i.Id.ToString()))
+                {
+                    <div class="circle active">
+                        <span class="label">@pos</span>
+                        <span class="title">@i.EstadoActual</span>
+                    </div>
+                }
+                else
+                {
+                    <div class="circle done">
+                        <span class="label">@pos</span>
+                        <span class="title">@i.EstadoActual</span>
+                    </div>
+                }
+                if (ViewBag.estados.Count - 1 != estados.FindIndex(Estado => Estado.Id.ToString() == i.Id.ToString()))
+                {
+                    <span class="bar half" style="width:@widthBar"></span>
+                }
+            }
+        }
+        else
+        {
+            <div class="circle">              
+                <span class="label">@pos </span>
+                <span class="title">@i.EstadoActual</span>
+            </div>
+            if (ViewBag.estados.Count - 1 != estados.FindIndex(Estado => Estado.Id.ToString() == i.Id.ToString()))
+            {
+                <span class="bar" style="width:@widthBar"></span>
+            }
+        }
+        pos++;
+    }
+    @if (ViewBag.Solicitud != null )
+    {
+        if (ViewBag.Solicitud.EstadoActual.EstadoActual == "Completado")
+        {
+        <div class="circle done">
+            <span class="label">@pos</span>
+            <span class="title">Completado/Denegado</span>
+        </div>
+        }
+        else if (ViewBag.Solicitud.EstadoActual.EstadoActual == "Denegado")
+        {
+            <div class="circle deny">
+                <span class="label">@pos</span>
+                <span class="title">Completado/Denegado</span>
+            </div>
+        }
+        else
+        {
+            <div class="circle">
+                <span class="label">@pos</span>
+                <span class="title">Completado/Denegado</span>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="circle">
+            <span class="label">@pos</span>
+            <span class="title">Completado/Denegado</span>
+        </div>
+    }
+</div>
